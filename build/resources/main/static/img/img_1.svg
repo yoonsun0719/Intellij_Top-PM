@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="172.233px" height="115.116px" viewBox="0 0 172.233 115.116" enable-background="new 0 0 172.233 115.116"
+	 xml:space="preserve">
+<g>
+	<defs>
+		<rect id="SVGID_1_" width="172.233" height="115.116"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	</clipPath>
+	<path clip-path="url(#SVGID_2_)" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" d="M2.948,114.852
+		c-0.088-0.49-0.172-0.983-0.252-1.478"/>
+	
+		<path clip-path="url(#SVGID_2_)" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" stroke-dasharray="2.972,5.944" d="
+		M1.934,107.479c-0.287-2.963-0.434-5.968-0.434-9.006c0-51.004,41.347-92.35,92.351-92.35c26.3,0,50.032,10.994,66.852,28.636"/>
+	<path clip-path="url(#SVGID_2_)" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" d="M162.718,36.942
+		c0.333,0.373,0.663,0.748,0.989,1.126"/>
+	<path clip-path="url(#SVGID_2_)" fill="#CAD0FF" d="M129.659,100.233L92.726,53.61c-1.806-2.279-4.438-3.419-7.068-3.419H60.051
+		V77.01l-18.397,23.224c-4.683,5.912-0.473,14.618,7.069,14.618h11.328h25.606h36.933
+		C130.132,114.852,134.342,106.146,129.659,100.233"/>
+	<path clip-path="url(#SVGID_2_)" fill="#FFFFFF" d="M52.982,53.61l-36.933,46.624c-4.683,5.912-0.473,14.618,7.069,14.618h73.866
+		c7.542,0,11.753-8.706,7.07-14.618L67.12,53.61C63.51,49.052,56.593,49.052,52.982,53.61"/>
+	<polygon clip-path="url(#SVGID_2_)" fill="#4C4EFF" points="61.955,37.686 33.212,0 4.469,37.686 21.739,37.686 21.739,114.853 
+		44.685,114.853 44.685,37.686 	"/>
+	<path clip-path="url(#SVGID_2_)" fill="#767DFF" d="M165.371,22.712v-0.015h-27.058v28.577l-14.845,18.02H98.816
+		c-3.897,0-7.058,3.16-7.058,7.058v38.5h29.263h17.292h2.661h24.396h6.863V29.769C172.234,25.566,168.89,22.841,165.371,22.712"/>
+	<path clip-path="url(#SVGID_2_)" fill="#B0B4FF" d="M96.533,69.294H71.881c-3.898,0-7.058,3.16-7.058,7.058v38.5h29.263h19.953
+		h31.259V29.769c0-6.621-8.296-9.598-12.506-4.487L96.533,69.294z"/>
+</g>
+</svg>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Side Admin</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/css/coreui.min.css" rel="stylesheet"
+          integrity="sha384-UkVD+zxJKGsZP3s/JuRzapi4dQrDDuEf/kHphzg8P3v8wuQ6m9RLjTkPGeFcglQU" crossorigin="anonymous">
+
+    <style>
+        nput[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .body-container {
+            width: 50%;
+            margin: auto;
+        }
+        
+        @media (max-width: 800px) {
+
+            .body-container {
+                min-width: 95%;
+                margin: auto;
+            }
+        }
+
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/@coreui/coreui@4.2.0/dist/js/coreui.bundle.min.js"
+            integrity="sha384-n0qOYeB4ohUPebL1M9qb/hfYkTp4lvnZM6U6phkRofqsMzK29IdkBJPegsyfj/r4"
+            crossorigin="anonymous"></script>
+
+    <!-- jquery -->
+   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <!-- axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script type="module" th:src="@{/js/admin.js}"></script>
+
+</head>
+<body>
+<div class="body-container">
+
+    <header class="header">
+        <a class="header-brand" href="#">All Side Admin</a>
+        <ul class="header-nav">
+            <li class="nav-item" th:if="${session.admin_uuid == null}">
+                <a class="nav-link" href="#" data-coreui-toggle="modal" data-coreui-target="#login-modal-open">Login</a>
+            </li>
+            <li class="nav-item" th:if="${session.admin_uuid != null}">
+                <a class="nav-link" href="/admin/logout">Logout</a>
+            </li>
+        </ul>
+    </header>
+
+    <!-- Login Modal -->
+
+    <div class="modal fade" data-coreui-backdrop="static" id="login-modal-open" tabindex="-1"
+         aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="id-input" class="form-label">id</label>
+                        <input type="text" class="form-control" id="id-input">
+                    </div>
+                    <div class="mb-3">
+                        <label for="pw-input" class="form-label">pw</label>
+                        <input type="password" class="form-control" id="pw-input">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="login-btn">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--로그인 전 출력 리스트-->
+    <div th:if="${session.admin_uuid == null}">
+        <ul class="list-group" style="margin: 20px 0; cursor: pointer;">
+            <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action" data-coreui-toggle="modal" data-coreui-target="#login-modal-open">
+                로그인 먼저 진행해 주세요.
+            </li>
+        </ul>
+    </div>
+
+    <!--로그인 후 출력 리스트-->
+    <div th:if="${session.admin_uuid != null}">
+        <ul class="list-group" style="margin: 20px 0; cursor: pointer;">
+            <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action"
+                data-coreui-toggle="modal" data-coreui-target="#modal-open" th:each="i : ${dataList}" th:id="${i.uuid}" onclick="findList(this)">
+                <div th:text="${i.title}"></div>
+                <span class="badge bg-success rounded-pill" th:if="${i.state == 'Y'}">확인</span>
+                <span class="badge bg-danger rounded-pill" th:id="${i.uuid + '-state'}" th:if="${i.state == 'N'}">미확인</span>
+            </li>
+        </ul>
+    </div>
+
+    <!--페이지네이션 영역-->
+    <nav aria-label="breadcrumb" th:if="${session.admin_uuid != null}">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <input type="number" class="form-control" id="page-input" style="width: 6vh;">
+            </li>
+            <li class="breadcrumb-item" id="maxPage" th:text="${maxPage}"></li>
+            <li class="breadcrumb-item">
+                <button type="button" class="btn btn-dark" id="page-btn">조회</button>
+            </li>
+        </ol>
+    </nav>
+
+    <!-- Contents Modal -->
+    <div class="modal fade" data-coreui-backdrop="static" id="modal-open" tabindex="-1"
+         aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!--타이틀-->
+                    <h5 class="modal-title" id="modalLabel"></h5>
+                    <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="card" id="card" style="width: 100%;">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div>
+            <span>ALL SIDE</span>
+            <span>&copy; 2022 creativeLabs.</span>
+        </div>
+        <div>
+            <span>목록이 보이지 않으면 재로그인 해주세요.</span>
+        </div>
+        <div>
+            <span>Powered by</span>
+            <a href="http://www.fixability.co.kr/default/">FixAbility</a>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
+
+<script>
+
+    function findList(getId) {
+
+        axios({
+            method: 'post',
+            url: '/admin/findList',
+            data: {getUuid: $(getId).attr('id')},
+            dataType: 'json'
+        }).then(res => {
+            // 데이터 set
+            const data = res.data
+
+            const necessaryTask = data.necessary_task.split(',')
+            const nowState = data.now_state.split(',')
+            const timeData = data.time.split(',')
+
+            let necessaryTaskRes = ''
+            let nowStateRes = ''
+            let timeDatas = ''
+
+            for (const i in necessaryTask) {
+                necessaryTaskRes += `<li>${necessaryTask[i]}</li>`
+            }
+
+            for (const i in nowState) {
+                nowStateRes += `<li>${nowState[i]}</li>`
+            }
+
+            for (const i in timeData) {
+                timeDatas += `<li>${timeData[i]}</li>`
+            }
+
+            // Modal set
+            $('#modalLabel').text(data.title)
+
+            const setComp = `
+                <div class="card-body" id="card-body">
+                            <span style="float: right">요청일 : ${data.requested_date.replaceAll('"', "")}</span>
+                            <h5 class="card-title">이주사유</h5>
+                            <ul>${nowStateRes.replaceAll('"', "")}</ul>
+                            <h5 class="card-title">성별ㆍ나이ㆍ동거인수</h5>
+                            <ul>${necessaryTaskRes.replaceAll('"', "")}</ul>
+                            <h5 class="card-title">직군ㆍ주차유무ㆍ반려동물유무</h5>
+                           <!-- <ul>${data.time.replaceAll('"', "")}</ul> -->
+                            <ul>${timeDatas.replaceAll('"', "")}</ul>
+                            <h5 class="card-title">문의 정보</h5>
+                            <ul>
+                                <li>성명 : ${data.corporate_name.replaceAll('"', "")}</li>
+                                <li>전화번호 : ${data.corporate_tel.replaceAll('"', "")}</li>
+                                <li>현재거주지 : ${data.staff_name.replaceAll('"', "")}</li>
+                            </ul>
+                        </div>
+            `
+
+            $('#card-body').remove()
+            $('#card').append(setComp)
+
+
+            if($(`#${data.uuid}-state`).text() != '확인') {
+                $(`#${data.uuid}-state`).text('확인').attr('class', 'badge bg-success rounded-pill')
+            }
+
+        })
+
+    }
+</script>

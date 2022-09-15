@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+      name="viewport">
+<head>
+    <meta charset="UTF-8">
+    <title>All Side</title>
+
+    <th:block th:include="common/library-header"></th:block>
+</head>
+<body>
+<div class="container">
+
+    <input type="hidden" class="page-num" value="1"/>
+
+    <a href="/" class="btn btn-back">메인으로</a>
+
+    <h3 class="tit">독립을 결심하게 된 계기를 선택해주세요.</h3>
+    <p class="sub">복수 선택 가능</p>
+
+    <ul class="check-list">
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check" type="checkbox" value="교통편의" name="check"/>
+                <span>교통편의</span>
+            </label>
+        </li>
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check" type="checkbox" value="결혼(동거)"  name="check"/>
+                <span>결혼(동거)</span>
+            </label>
+        </li>
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check" type="checkbox" value="계약만기" name="check"/>
+                <span>계약만기</span>
+            </label>
+        </li>
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check" type="checkbox" value="기존주거환경 불만족" name="check"/>
+                <span>기존주거환경 불만족</span>
+            </label>
+        </li>
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check" type="checkbox" value="직장발령" name="check"/>
+                <span>직장발령</span>
+            </label>
+        </li>
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check" type="checkbox" value="기타" name="check"/>
+                <span>기타</span>
+            </label>
+        </li>
+    </ul>
+
+    <button type="button" class="btn btn-fix" id="next" onclick="location.href='sub2'">다음</button>
+
+</div>
+
+</body>
+</html>

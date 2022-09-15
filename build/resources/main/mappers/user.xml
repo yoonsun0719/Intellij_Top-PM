@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.toppm.toppmcafe24.user.UserMapper">
+
+<!-- 사용자 입력 데이터 저장-->
+    <insert id="saveData" parameterType="HashMap">
+        INSERT INTO `tramstoppm`.`request_list`
+        (
+            `seq`,
+            `uuid`,
+            `title`,
+            `now_state`,
+            `necessary_task`,
+            `time`,
+            `corporate_name`,
+            `corporate_tel`,
+            `staff_name`,
+            `requested_date`,
+            `state`
+        )
+        values
+            (
+                0,
+                REPLACE(UUID(), '-', ''),
+                #{title},
+                #{now_state},
+                #{necessary_task},
+                #{time},
+                #{corporate_name},
+                #{corporate_tel},
+                #{staff_name},
+                DATE_FORMAT(now(), '%Y-%m-%d %H:%i:%s'),
+                'N'
+            );
+    </insert>
+
+</mapper>

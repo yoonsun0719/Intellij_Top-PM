@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*min-height: 100vh;*/
+}
+/* calendar의 크기 */
+.calendar {
+    width: 380px;
+    height: 280px;
+    margin: 30px;
+}
+/*.header 안에 있는 year-month와 nav의 양끝 정렬과 세로 가운데 정렬을 하기 위해 flex로 정렬했고, year-month 폰트 크기는 35px로 조절*/
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.year-month {
+    font-size: 35px;
+}
+/*.nav부분 역시 버튼들끼리의 정렬을 위해서 display 부분만 flex를 주고 테두리를 그려주면서 모서리 라운딩*/
+.nav {
+    display: flex;
+    border: 1px solid #333333;
+    border-radius: 5px;
+}
+
+.nav-btn {
+    width: 28px;
+    height: 30px;
+    border: none;
+    font-size: 16px;
+    line-height: 34px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.go-today {
+    width: 75px;
+    border-left: 1px solid #333333;
+    border-right: 1px solid #333333;
+}
+/*요일 및 날짜*/
+.days {
+    display: flex;
+    margin: 25px 0 10px;
+}
+
+.day {
+    width: calc(100% / 7);
+    text-align: center;
+}
+
+.dates {
+    display: flex;
+    flex-flow: row wrap;
+    height: 300px;
+    border-top: 1px solid #333333;
+    border-right: 1px solid #333333;
+}
+
+.date {
+    width: calc(100% / 7);
+    padding: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #333333;
+}
+
+/*일요일은 붉게, 토요일은 푸르게*/
+.day:nth-child(7n + 1),
+.date:nth-child(7n + 1) {
+    color: #D13E3E;
+}
+
+.day:nth-child(7n),
+.date:nth-child(7n) {
+    color: #396EE2;
+}
+
+/*테두리 부분도 같이 투명도가 같이 조절이 되기 때문에 글자만 투명도를 주기 위함*/
+.other {
+    opacity: .3;
+}
+
+/*today의 글자 색을 하얗게 바꿔주고 가상 클래스로 뒷 배경*/
+.today {
+    position: relative;
+    color: #ff782f;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.today::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    content: '';
+}

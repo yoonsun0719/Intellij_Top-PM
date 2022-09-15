@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+      name="viewport">
+<head>
+    <meta charset="UTF-8">
+    <title>All Side</title>
+
+    <th:block th:include="common/library-header"></th:block>
+
+</head>
+<body>
+<div class="container">
+
+    <input type="hidden" class="page-num" value="2"/>
+
+    <button type="button" onclick="history.back()" class="btn btn-back">이전 단계</button>
+
+    <h3 class="tit">성별을 선택해주세요</h3>
+
+    <ul class="check-list">
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check sub2" value="여성" type="checkbox" name="check"/>
+                <span>여성</span>
+            </label>
+        </li>
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check sub2" value="남성" type="checkbox" name="check"/>
+                <span>남성</span>
+            </label>
+        </li>
+
+        <h3 class="tit">나이를 선택해주세요</h3>
+        <p class="sub"> 🚨️ 죄송합니다. 올사이드는 청년 주거 문화의 혁신을 미션으로 한 서비스이기때문에</p>
+        <p class="sub"> 더많은 청년(20세 ~ 만34세 이하)들에게 기회가 주어질 수 있도록 </p>
+        <p class="sub"> 36세 이상인 경우 상담 접수하셔도 계약을 진행하지 않습니다. </p>
+
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check sub2" value="23살 이하"  type="checkbox" name="check"/>
+                <span>23살 이하</span>
+            </label>
+        </li>
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check sub2" value="24~27세" type="checkbox" name="check"/>
+                <span>24~27세</span>
+            </label>
+        </li>
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check sub2" value="28~30세" type="checkbox" name="check"/>
+                <span>28~30세</span>
+            </label>
+        </li>
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check sub2" value="31세 이상" type="checkbox" name="check"/>
+                <span>31세 이상</span>
+            </label>
+        </li>
+
+        <h3 class="tit">함께 거주하는 동거인이 있으신가요?</h3>
+
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check sub2" value="없음" type="checkbox" name="check"/>
+                <span>없음</span>
+            </label>
+        </li>
+
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check sub2" value="1명" type="checkbox" name="check"/>
+                <span>1명</span>
+            </label>
+        </li>
+
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check sub2" value="2명" type="checkbox" name="check"/>
+                <span>2명</span>
+            </label>
+        </li>
+    </ul>
+
+    <button type="button" class="btn btn-fix" id="next" onclick="location.href='sub3'">다음</button>
+
+</div>
+
+</body>
+</html>
