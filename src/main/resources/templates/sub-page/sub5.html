@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>All Side</title>
+
+    <th:block th:include="common/library-header"></th:block>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/calStyle.css}">
+</head>
+<body>
+<div class="container">
+
+    <input type="hidden" class="page-num" value="3"/>
+
+    <button type="button" onclick="history.back()" class="btn btn-back">이전 단계</button>
+
+    <h3 class="tit">이사 예정일을 선택해주세요</h3>
+    <p class="sub">이사 에정일이 40일 이상남았을경우, 40일째 연락드립니다</p>
+
+    <div class="calendar">
+        <div class="header">
+            <div class="year-month"></div>
+            <div class="nav">
+                <button class="nav-btn go-prev" onclick="prevMonth()">&lt;</button>
+                <button class="nav-btn go-today" onclick="goToday()">Today</button>
+                <button class="nav-btn go-next" onclick="nextMonth()">&gt;</button>
+            </div>
+        </div>
+        <div class="main">
+            <div class="days">
+                <div class="day">일</div>
+                <div class="day">월</div>
+                <div class="day">화</div>
+                <div class="day">수</div>
+                <div class="day">목</div>
+                <div class="day">금</div>
+                <div class="day">토</div>
+            </div>
+            <div class="dates"></div>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-fix active" id="next" onclick="location.href='sub4'">다음</button>
+</div>
+</body>
+</html>
+
+<script>
+    //날짜 데이터 이므로 Date 객체 활용
+    let date = new Date();
+
+    const renderCalendar = () => {
+        //년도와 월을 몇번더 사용해야 하므로 메서드를 호출하기보다는 미리 값을 가지고 있는것이 나으므로 변수를 따로생성(가독성)
+        const viewYear = date.getFullYear();
+        const viewMonth = date.getMonth();
+
+        //year-month (년/월)
+        document.querySelector('.year-month').textContent = `${viewYear}년 ${viewMonth + 1}월`;
+
+        //1. 지난 달 마지막 날짜와 요일 -> 지난 달 날짜 며칠을 몇 개를 그려내야 될지 결정
+        //2. 이번 달 마지막 날짜와 요일입니다. -> 다음 달 날짜 며칠, 몇 개를 그려내야 될지를 결정
+        const prevLast = new Date(viewYear, viewMonth, 0); //새로운 Date객체를 생성할 때, 파라미터 date에 해당하는 부분에 0을 전달하게 되면, 지난달의 마지막 날의 Date 객체가 생성
+        const thisLast = new Date(viewYear, viewMonth + 1, 0); //위와 같은 원리로 파라미터 다음 달의 0번째 날을 뽑으면, 이번 달의 마지막 날 Date객체가 생성
+
+        //지난달 마지막 날짜(PLDate), 요일(PLDay),
+        const PLDate = prevLast.getDate();
+        const PLDay = prevLast.getDay();
+
+        //이번 달 마지막 날짜(TLDate)와 요일(TLDay)
+        const TLDate = thisLast.getDate();
+        const TLDay = thisLast.getDay();
+
+        /*Dates의 기본 배열들
+        1. Array(n)으로 배열을 만들면 길이가 n인 배열이 생성됩니다. (이때 모든 요소들은 undefined)
+        2. 그런데 모든 요소들이 empty 값이기 때문에 keys() 메서드를 활용하면 0부터 n - 1까지의 Array Iterator가 생성되는데,
+        3. 전개 구문을 통해서 이 Array Iterator를 배열로 만들어 내면 0부터 n-1까지의 배열을 얻어낼 수가 있습니다.
+        4. 그래서 이번 달 마지막 날짜 + 1을 n에 전달해주고
+        5. 제일 앞에 있는 0을 없애기 위해서 slice 메서드를 활용한 것이죠.
+        */
+        const prevDates = [];
+        const thisDates = [...Array(TLDate + 1).keys()].slice(1);
+        const nextDates = [];
+
+        //prevDates와, nextDates 채우기
+        if (PLDay !== 6) {
+            for (let i = 0; i < PLDay + 1; i++) {
+                prevDates.unshift(PLDate - i);
+            }
+        }
+
+        for (let i = 1; i < 7 - TLDay; i++) {
+            nextDates.push(i);
+        }
+
+
+        //데이터들을 이제 html에 그려내기
+        const dates = prevDates.concat(thisDates, nextDates);
+
+        // Dates 정리
+        const firstDateIndex = dates.indexOf(1); //지난달 부분을 알아내기 위해서 첫날의 index(firstDateIndex),
+        const lastDateIndex = dates.lastIndexOf(TLDate); //다음 달 부분을 알아내기 위해서 마지막 날의 index(lastDateIndex)
+        dates.forEach((date, i) => {
+            const condition = i >= firstDateIndex && i < lastDateIndex + 1
+                ? 'this'
+                : 'other';
+
+            dates[i] = `<div class="date"><span class="${condition}">${date}</span></div>`;
+        })
+
+        document.querySelector('.dates').innerHTML = dates.join('');
+
+        // 오늘 날짜 그리기
+        const today = new Date();
+        if (viewMonth === today.getMonth() && viewYear === today.getFullYear()) {
+            for (let date of document.querySelectorAll('.this')) {
+                if (+date.innerText === today.getDate()) {
+                    date.classList.add('today');
+                    break;
+                }
+            }
+        }
+    }
+
+    renderCalendar();
+
+    /*지난 달, 다음 달, 그리고 오늘로 이동하는 세 가지 함수*/
+    const prevMonth = () => {
+        date.setDate(1);
+        date.setMonth(date.getMonth() - 1);
+        renderCalendar();
+    }
+
+    const nextMonth = () => {
+        date.setDate(1)
+        date.setMonth(date.getMonth() + 1);
+        renderCalendar();
+    }
+
+    const goToday = () => {
+        date = new Date();
+        renderCalendar();
+    }
+</script>

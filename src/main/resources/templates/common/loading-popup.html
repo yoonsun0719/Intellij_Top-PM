@@ -1,0 +1,17 @@
+<div class="popupBlurArea">
+    <div class="popupArea">
+        <div class="popupHeader">
+            <div class="popupTitle" th:text="${title}"></div>
+        </div>
+        <div class="popupContent">
+            <img class="popupMsg" src="/img/loading-bar.gif" ></img>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // 팝업 닫기
+        $('.popupCloseBtn').on('click', () => {
+            $('.popupBlurArea').remove()
+        })
+    </script>
+</div>

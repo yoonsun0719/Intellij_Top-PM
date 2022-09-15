@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="193.812px" height="152.963px" viewBox="0 0 193.812 152.963" enable-background="new 0 0 193.812 152.963"
+	 xml:space="preserve">
+<g>
+	<defs>
+		<rect id="SVGID_1_" width="193.812" height="152.963"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	</clipPath>
+	<path clip-path="url(#SVGID_2_)" fill="#CFD2FC" d="M151.405,57.601h-36.993l1.851-6.979c0.491-1.848-0.903-3.66-2.816-3.66H92.067
+		c-1.321,0-2.477,0.889-2.816,2.166l-2.248,8.473H50.22c-4.075,0-7.639,2.742-8.684,6.68l-20.874,88.682H137.38l20.436-87.029
+		C158.933,61.725,155.76,57.601,151.405,57.601"/>
+	<path clip-path="url(#SVGID_2_)" fill="#8690FA" d="M137.38,152.963H20.662V76.586c0-4.962,4.022-8.984,8.983-8.984h98.751
+		c4.962,0,8.984,4.022,8.984,8.984V152.963z"/>
+	<path clip-path="url(#SVGID_2_)" fill="#4C4EFF" d="M137.38,152.963H20.662L0.226,85.935c-1.117-4.208,2.056-8.332,6.41-8.332
+		h101.186c4.074,0,7.64,2.741,8.684,6.68L137.38,152.963z"/>
+	<path clip-path="url(#SVGID_2_)" fill="#FFFFFF" d="M169.812,0c-13.255,0-24,10.745-24,24s10.745,24,24,24
+		c6.627,0,12.627-2.686,16.971-7.029L169.812,24V0z"/>
+	<path clip-path="url(#SVGID_2_)" fill="#4C4EFF" d="M169.812,0v24l16.971,16.971c4.344-4.344,7.029-10.344,7.029-16.971
+		C193.812,10.745,183.066,0,169.812,0"/>
+	<polygon clip-path="url(#SVGID_2_)" fill="#FFFFFF" points="98.131,95.835 95.917,95.835 108.373,136.73 110.587,136.73 	"/>
+	<polygon clip-path="url(#SVGID_2_)" fill="#FFFFFF" points="87.124,95.835 84.91,95.835 97.366,136.73 99.58,136.73 	"/>
+	<path clip-path="url(#SVGID_2_)" fill="#FFFFFF" d="M61.31,94.17c-1.368,2.003-4.521,2.23-7.044,0.508
+		c-2.523-1.723-3.46-4.742-2.092-6.745c1.367-2.003,4.521-2.23,7.044-0.509C61.74,89.147,62.677,92.167,61.31,94.17"/>
+</g>
+</svg>

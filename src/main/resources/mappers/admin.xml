@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.toppm.toppmcafe24.admin.AdminMapper">
+
+<!--    어드민 계정 조회-->
+    <select id="findAdminUser" resultType="HashMap">
+        SELECT * FROM admin_user;
+    </select>
+
+<!--    문의 리스트 조회 및 페이징 처리, 최신 날짜 상위로 정렬-->
+    <select id="getData" resultType="HashMap" parameterType="HashMap">
+        SELECT *
+        from tramstoppm.request_list
+        ORDER BY seq DESC
+        LIMIT ${(max*page)-max}, ${max};
+    </select>
+
+<!--    문의 내용 조회-->
+    <select id="findList" resultType="HashMap" parameterType="HashMap">
+        SELECT *
+        from tramstoppm.request_list WHERE uuid = #{getUuid};
+    </select>
+
+<!--    미확인 문의 상태 업데이트-->
+    <update id="stateUpdate" parameterType="HashMap">
+        update tramstoppm.request_list
+        set state = 'Y'
+        where uuid = #{getUuid};
+    </update>
+
+<!--    문의 리스트 행 개수 조회 (maxPage 확인용)-->
+    <select id="getRowCnt" resultType="int">
+        SELECT COUNT(*) FROM tramstoppm.request_list;
+    </select>
+
+
+</mapper>

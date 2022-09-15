@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+      name="viewport">
+<head>
+    <meta charset="UTF-8">
+    <title>All Side</title>
+
+    <th:block th:include="common/library-header"></th:block>
+
+</head>
+<body>
+<div class="container">
+
+    <input type="hidden" class="page-num" value="3"/>
+
+    <button type="button" onclick="history.back()" class="btn btn-back">이전 단계</button>
+
+    <h3 class="tit">현재 어떤 직업군을 가지고 계시나요?</h3>
+    <p class="sub"> 🚨 안정적이고 일정한 소득이 있는지 확인합니다 </p>
+
+    <ul class="check-list">
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check" type="checkbox" name="check" value="직장인"/>
+                <span>직장인</span>
+            </label>
+        </li>
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check" type="checkbox" name="check" value="아르바이트"/>
+                <span>아르바이트</span>
+            </label>
+        </li>
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check" type="checkbox" name="check" value="자영업 또는 프리랜서"/>
+                <span>자영업 또는 프리랜서</span>
+            </label>
+        </li>
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check" type="checkbox" name="check" value="무직 또는 휴직"/>
+                <span>무직 또는 휴직</span>
+            </label>
+        </li>
+
+    <h3 class="tit">주차 공간이 필요하신가요?</h3>
+
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check" type="checkbox" name="check" value="필요함"/>
+                <span>필요함</span>
+            </label>
+        </li>
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check" type="checkbox" name="check" value="필요하지 않음"/>
+                <span>필요하지 않음</span>
+            </label>
+        </li>
+
+    <h3 class="tit">반려동물이 있으신가요?</h3>
+
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check" type="checkbox" name="check" value="없음"/>
+                <span>없음</span>
+            </label>
+        </li>
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check" type="checkbox" name="check" value="1마리"/>
+                <span>1마리</span>
+            </label>
+        </li>
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check" type="checkbox" name="check" value="2마리"/>
+                <span>2마리</span>
+            </label>
+        </li>
+        <li class="check-list--item">
+            <label class="checkbox">
+                <input class="input-check" type="checkbox" name="check" value="3마리 이상"/>
+                <span>3마리 이상</span>
+            </label>
+        </li>
+    </ul>
+
+    <button type="button" class="btn btn-fix active" id="next" onclick="location.href='sub4'">다음</button>
+
+</div>
+</body>
+</html>
